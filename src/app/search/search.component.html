@@ -1,0 +1,39 @@
+
+<div class="container margin">
+    <div class="row">
+        <div class="col-12 mt-3 d-flex justify-content-center">
+            <div class="card bg">
+                <div class="card-horizontal"  *ngFor='let doctor of doctors'>
+                        
+                    <div>
+                        <img [src]="doctor.doctorImage" width="50%" height="70%" class="image-fluid mt-4" alt="Responsive image">
+                    </div>
+                    
+                    <div class="card-body">
+                            <div class="display-4">
+                                    <ngb-rating [rate]= 'rating'></ngb-rating>
+                                </div>
+                        <h4 class="card-title">Dr. {{doctor.doctorName}} ({{doctor.gender}}) </h4>
+                        {{doctor.specialization}} <br>
+                        {{doctor.city}}
+                        <div>
+                            Email: {{doctor.email}} <br>
+                            Mobile: {{doctor.phoneNumber}}<br>
+                            Address: {{doctor.officeAddress}} <br>
+                            Friendly with local language and {{doctor.language1}}<br>
+                        </div>
+                        <div *ngIf='isPatient()' (click)='appointment(doctor)' class="btn btn-outline-info">
+                            book an appointment!
+                        </div>
+                        <div *ngIf='!isPatient()' (click)='loginFirst()' class="btn btn-outline-info">
+                                book an appointment!
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
